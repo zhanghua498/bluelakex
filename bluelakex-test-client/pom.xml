@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>zh</groupId>
+    <artifactId>bluelakex</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>zh</groupId>
+  <artifactId>bluelakex-test-client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+  	<bluelake-client.version>0.0.1-SNAPSHOT</bluelake-client.version>
+  </properties>
+  
+  <dependencies>
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.2.12.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.2.12.RELEASE</version>
+			<scope>test</scope>
+		</dependency>  
+  
+	  	<dependency>
+			<groupId>zh</groupId>
+		    <artifactId>bluelakex-client</artifactId>
+		    <version>${bluelake-client.version}</version>
+	  	</dependency>
+  </dependencies>
+  
+</project>

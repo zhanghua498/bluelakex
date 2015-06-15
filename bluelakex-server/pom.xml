@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>zh</groupId>
+    <artifactId>bluelakex</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>zh</groupId>
+  <artifactId>bluelakex-server</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+  	<bluelake-serialize.version>0.0.1-SNAPSHOT</bluelake-serialize.version>
+  	<bluelake-core.version>0.0.1-SNAPSHOT</bluelake-core.version>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  	    <groupId>zh</groupId>
+	    <artifactId>bluelakex-serialize</artifactId>
+	    <version>${bluelake-serialize.version}</version>
+  	</dependency>
+  	<dependency>
+  	    <groupId>zh</groupId>
+	    <artifactId>bluelakex-core</artifactId>
+	    <version>${bluelake-core.version}</version>
+  	</dependency>
+  </dependencies>
+  
+</project>

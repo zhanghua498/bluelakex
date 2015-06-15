@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>zh</groupId>
+    <artifactId>bluelakex</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>zh</groupId>
+  <artifactId>bluelakex-test-server</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+   <properties>
+  	<bluelakex-test-client.version>0.0.1-SNAPSHOT</bluelakex-test-client.version>
+  	<bluelakex-server.version>0.0.1-SNAPSHOT</bluelakex-server.version>
+  </properties>
+  
+  
+  <dependencies>
+   	  	<dependency>
+			<groupId>zh</groupId>
+		    <artifactId>bluelakex-test-client</artifactId>
+		    <version>${bluelakex-test-client.version}</version>
+	  	</dependency>
+		<dependency>
+			<groupId>zh</groupId>
+		    <artifactId>bluelakex-server</artifactId>
+		    <version>${bluelakex-server.version}</version>
+	  	</dependency> 
+  </dependencies>
+
+</project>

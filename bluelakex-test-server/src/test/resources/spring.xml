@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="me.ele.bluelakex.test.server"/>
+    
+    <!-- 注册序列化组件 -->
+    <bean id="serializerProtostuff" class="me.ele.bluelakex.serialize.ProtostuffSerializer" 
+    factory-method="getSerializer" ></bean>
+    <bean id="serializerJDK" class="me.ele.bluelakex.serialize.JDKSerializer" 
+    factory-method="getSerializer" ></bean>
+	<bean id="serializerKryo" class="me.ele.bluelakex.serialize.KryoSerializer" 
+    factory-method="getSerializer" ></bean>
+	<bean id="serializerFST" class="me.ele.bluelakex.serialize.FSTSerializer" 
+    factory-method="getSerializer" ></bean>
+    
+    
+    <!-- ZooKeeper注册服务 -->
+    <bean id="zk" class="me.ele.bluelakex.zookeeper.ZooKeeperServiceRegister">
+    	<constructor-arg name="connectString" value="zk1:4180,zk2:4180,zk3:4180"></constructor-arg>	
+    	<constructor-arg name="serverPaths" value="127.0.0.1:50001,localhost:50001"></constructor-arg>
+    	<constructor-arg name="isInit" value="true"></constructor-arg>
+    </bean>
+
+	<!-- 注册PRC服务启动类 -->
+    <bean id="rpcServer50001" class="me.ele.bluelakex.server.RpcServer">
+        <constructor-arg name="port" value="50001"/>
+        <constructor-arg name="serializer" ref="serializerProtostuff"/>
+    </bean>
+
+</beans>

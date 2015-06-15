@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="me.ele.bluelakex.test"/>
+	
+	<!-- 配置异步调用是的线程池大小和等待队列长度 -->
+	<bean id="threadPool" class="me.ele.bluelakex.client.async.RpcAsyncExecutor">
+		<property name="corePoolSize" value="10"/>
+		<property name="maximumPoolSize" value="50"/>
+		<property name="acceptCount" value="0"/>
+	</bean>
+	
+	<!-- 配置ZooKeeper服务 -->
+	<bean id="zk1" class="me.ele.bluelakex.zookeeper.ZooKeeperServiceDiscover">
+		<constructor-arg name="connectString" value="zk1:4180,zk2:4180,zk3:4180"></constructor-arg>
+	</bean>
+	
+	<!-- 配置服务上下文 -->
+	<bean id="rpcCLientContext" class="me.ele.bluelakex.client.RpcClientContext">
+		<!-- 远程服务地址 -->
+		<property name="serverMap">
+			<map>
+				<entry key="server1" value="127.0.0.1:50001"></entry>
+			</map>
+		</property>
+		<!-- ZooKeeper服务地址 -->
+		<property name="zkServerMap">
+			<map>
+				<entry key="zk1" value-ref="zk1"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- RPC调用代理 -->
+	<bean id="rpcProxy" class="me.ele.bluelakex.client.RpcProxy">
+		<constructor-arg name="clientContext" ref="rpcCLientContext"></constructor-arg>
+		<constructor-arg name="threadPool" ref="threadPool"></constructor-arg>
+	</bean>
+
+</beans>
